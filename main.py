@@ -157,3 +157,12 @@ async def get_top_support_cards(limit: int = 10):
             return {"top_support_cards": support_cards}
         except httpx.HTTPError as e:
             raise HTTPException(status_code=400, detail=str(e))
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(
+        "main:app",
+        host="0.0.0.0",
+        port=int(os.environ.get("PORT", 8000)),
+        reload=True
+    )
